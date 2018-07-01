@@ -1,3 +1,4 @@
+# main application start file Master over all init
 require_relative 'boot'
 
 require "rails"
