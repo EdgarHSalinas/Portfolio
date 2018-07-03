@@ -8,7 +8,7 @@ class PortfolioProjectsController < ApplicationController
   end
 
 
-  # POST /portfolio_project
+  # POST /portfolio_projects
   
   def create
     @portfolio_item = PortfolioProject.new(params.require(:portfolio_project).permit(:title, :subtitle, :body))
@@ -20,5 +20,12 @@ class PortfolioProjectsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+
+  # Edit 
+  # GET /portfolio_projects/1/edit
+  def edit
+    @portfolio_item = PortfolioProject.find(params[:id])
   end
 end
