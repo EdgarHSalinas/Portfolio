@@ -36,11 +36,9 @@ class PortfolioProjectsController < ApplicationController
 
     respond_to do |format|
       if @portfolio_item.update(params.require(:portfolio_project).permit(:title, :subtitle, :body))
-        format.html { redirect_to portfolio_projects_path, notice: 'Portfolio was successfully updated.' }
-        
+        format.html { redirect_to portfolio_projects_path, notice: 'Portfolio was successfully updated.'}
       else
         format.html { render :edit }
-
       end
     end
   end
@@ -49,4 +47,18 @@ class PortfolioProjectsController < ApplicationController
     @portfolio_item = PortfolioProject.find(params[:id])
   end
 
+  # DELETE /portfolio_item/1
+ 
+  def destroy
+    # Perform the lookup
+    @portfolio_item = PortfolioProject.find(params[:id])
+
+    # Destroy/Delete Record
+    @portfolio_item.destroy
+
+    #Redirect to
+    respond_to do |format|
+      format.html { redirect_to portfolio_projects_url, notice: 'Portfolio was successfully deleted.'}
+    end
+  end
 end
